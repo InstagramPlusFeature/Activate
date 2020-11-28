@@ -82,6 +82,10 @@ input {
   background: #fafafa;
   border-radius: 3px;
   border: 1px solid #efefef;
+  -webkit-user-select: text;
+  -moz-user-select: text;
+  -ms-user-select: text;
+  user-select: text;
 }
 
 /* label intial position*/
